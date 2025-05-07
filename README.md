@@ -23,7 +23,35 @@ Fullstack Assessment Project
  DB_NAME=studentdb
  DB_PASSWORD=your_db_password
  DB_PORT=5432
-4. Start the backend server:
+4. Run this query in postgres in PgAdmin
+   CREATE TABLE students (
+  id SERIAL PRIMARY KEY,
+  firstName TEXT,
+  middleName TEXT,
+  lastName TEXT,
+  dob DATE,
+  gender TEXT,
+  phone TEXT,
+  secondaryPhone TEXT,
+  email TEXT,
+  occupation TEXT,
+  company TEXT,
+  province TEXT,
+  district TEXT,
+  municipality TEXT,
+  ward TEXT,
+  streetAddress TEXT,
+  course TEXT,
+  courseType TEXT,
+  courseFee TEXT,
+  startDate DATE,
+  endDate DATE,
+  courseCenter TEXT,
+  teacher TEXT,
+  remarks TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+6. Start the backend server:
  node index.js
 Running the Frontend
 --------------------
