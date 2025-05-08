@@ -11,11 +11,15 @@ const StudentsList = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const studentsPerPage = 20;
 
+
+  const BASE_URL = `http://${import.meta.env.VITE_DEV_IP}:${import.meta.env.VITE_DEV_PORT}`;
+
+
   useEffect(() => {
     const fetchStudents = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/students?page=${currentPage}&limit=${studentsPerPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`
+          `${BASE_URL}/students?page=${currentPage}&limit=${studentsPerPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`
         );
 
         const total = res.headers.get("TotalCount");

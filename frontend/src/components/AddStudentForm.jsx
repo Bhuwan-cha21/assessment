@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const Input = ({ label, required = false, ...props }: { label: string; required?: boolean; [x: string]: any }) => (
+
+
+const Input = ({ label, required = false, ...props }) => (
   <div className="flex flex-col">
     <label className="text-sm text-slate-600 mb-1">
       {label} {required && <span className="text-red-500">*</span>}
@@ -13,14 +15,8 @@ const Input = ({ label, required = false, ...props }: { label: string; required?
   </div>
 );
 
-const Select = ({ label, options, required = false, name, value, onChange }: {
-    label: string;
-    options: string[];
-    required?: boolean;
-    name: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  }) => (
+const Select = ({ label, options, required = false, name, value, onChange }
+  ) => (
     <div className="flex flex-col">
       <label className="text-sm text-slate-600 mb-1">
         {label} {required && <span className="text-red-500">*</span>}
@@ -68,7 +64,6 @@ const AddStudentForm = () => {
     remarks: '',
   });
 
-  // Handle input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -77,11 +72,15 @@ const AddStudentForm = () => {
     });
   };
 
-  // Handle form submission
+  const BASE_URL = `http://${import.meta.env.VITE_DEV_IP}:${import.meta.env.VITE_DEV_PORT}`;
+
+  
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/students', {
+
+      const response = await fetch(`${BASE_URL}/students`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
